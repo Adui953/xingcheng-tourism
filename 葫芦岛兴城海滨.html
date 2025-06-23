@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兴城海滨文旅数据中心 - 科学数据来源</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=HarmonyOS_Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #2E86C1;
+            --sea-green: #27AE60;
+            --sand-gold: #D4AC0D;
+            --sunset-orange: #E74C3C;
+            --deep-sea: #1A5276;
+            --stone-gray: #7F8C8D;
+            --light-sand: #F7F9F9;
+            --dark-text: #2C3E50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'HarmonyOS_Sans', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 页头样式 */
+        header {
+            background: linear-gradient(120deg, var(--deep-sea) 0%, var(--ocean-blue) 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 C50,20 50,80 100,100 L100,0 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        
+        .logo i {
+            font-size: 40px;
+            color: var(--ocean-blue);
+        }
+        
+        h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            opacity: 0.9;
+        }
+        
+        /* 海报展示区 */
+        .posters-section {
+            padding: 50px 0;
+            background: white;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.2rem;
+            color: var(--deep-sea);
+            display: inline-block;
+            padding: 0 20px;
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-header::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--sand-gold), transparent);
+            z-index: 0;
+        }
+        
+        .posters-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .poster-card {
+            background: var(--light-sand);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .poster-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .poster-img {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .poster-1 {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        }
+        
+        .poster-2 {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+        }
+        
+        .poster-3 {
+            background: linear-gradient(135deg, #834d9b, #d04ed6);
+        }
+        
+        .poster-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 15px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        .poster-info {
+            padding: 20px;
+        }
+        
+        .data-source {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        
+        .data-source h4 {
+            color: var(--deep-sea);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .data-source h4 i {
+            margin-right: 10px;
+            color: var(--sand-gold);
+        }
+        
+        .source-link {
+            display: block;
+            background: var(--ocean-blue);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        
+        .source-link:hover {
+            background: var(--deep-sea);
+        }
+        
+        /* 数据来源部分 */
+        .data-sources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .source-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--sand-gold);
+            transition: transform 0.3s ease;
+        }
+        
+        .source-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .source-icon {
+            font-size: 2.5rem;
+            color: var(--ocean-blue);
+            margin-bottom: 15px;
+        }
+        
+        .source-card h3 {
+            color: var(--deep-sea);
+            margin-bottom: 15px;
+            font-family: 'Noto Serif SC', serif;
+        }
+        
+        .source-list {
+            list-style: none;
+        }
+        
+        .source-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .source-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .source-list li i {
+            color: var(--sea-green);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--deep-sea);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--sand-gold);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--sand-gold);
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .poster-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-water"></i>
+                </div>
+            </div>
+            <h1>兴城海滨文旅数据中心</h1>
+            <p class="subtitle">基于科学数据的文旅视觉设计支持平台 · 提供权威数据来源与可视化支持</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="posters-section">
+            <div class="section-header">
+                <h2>文旅系列海报数据来源</h2>
+            </div>
+            
+            <div class="posters-container">
+                <!-- 海报1 -->
+                <div class="poster-card">
+                    <div class="poster-img poster-1">
+                        <div class="poster-title">《海城星钥》</div>
+                    </div>
+                    <div class="poster-info">
+                        <p>明代卫城与银河海岸的时空对话，展现城墙结构、星空观测指数与潮汐数据。</p>
+                        <div class="data-source">
+                            <h4><i class="fas fa-database"></i> 核心数据来源</h4>
+                            <ul>
+                                <li>城墙结构数据：《全辽志》万历刻本</li>
+                                <li>星空观测指数：国际暗夜协会认证</li>
+                                <li>潮汐模型：国家海洋信息中心</li>
+                            </ul>
+                            <a href="https://www.nmdis.org.cn/hygb/zghyzhb/" class="source-link">访问数据源</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 海报2 -->
+                <div class="poster-card">
+                    <div class="poster-img poster-2">
+                        <div class="poster-title">《泉愈之境》</div>
+                    </div>
+                    <div class="poster-info">
+                        <p>古海水温泉的疗愈密码，展示温泉地质剖面、矿物成分与康养功效数据。</p>
+                        <div class="data-source">
+                            <h4><i class="fas fa-database"></i> 核心数据来源</h4>
+                            <ul>
+                                <li>温泉水质报告：辽宁地矿局LN2023-WQ087</li>
+                                <li>疗效统计：中国温泉医学会报告</li>
+                                <li>历史考证：汤泉寺金代碑刻拓片</li>
+                            </ul>
+                            <a href="http://www.lndkj.gov.cn/col/col174/index.html" class="source-link">访问数据源</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 海报3 -->
+                <div class="poster-card">
+                    <div class="poster-img poster-3">
+                        <div class="poster-title">《千礁龙吟》</div>
+                    </div>
+                    <div class="poster-info">
+                        <p>亿年礁岩地质史诗，呈现岩层年代、潮间带生物链与历史事件沉积。</p>
+                        <div class="data-source">
+                            <h4><i class="fas fa-database"></i> 核心数据来源</h4>
+                            <ul>
+                                <li>地质年代：辽宁地质勘探院LN-JY2023-087</li>
+                                <li>生物普查：中科院海洋所2023报告</li>
+                                <li>历史事件：《宁远州志》嘉靖刻本</li>
+                            </ul>
+                            <a href="https://kgz.mct.gov.cn/" class="source-link">访问数据源</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section-header">
+            <h2>权威数据来源平台</h2>
+        </section>
+        
+        <div class="data-sources">
+            <div class="source-card">
+                <div class="source-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3>海洋与地质数据</h3>
+                <ul class="source-list">
+                    <li><i class="fas fa-link"></i> 国家海洋信息中心潮汐数据</li>
+                    <li><i class="fas fa-link"></i> 自然资源部海岸带地质云平台</li>
+                    <li><i class="fas fa-link"></i> 辽宁地矿局公开数据库</li>
+                    <li><i class="fas fa-link"></i> 中国地质大学实验室数据</li>
+                </ul>
+            </div>
+            
+            <div class="source-card">
+                <div class="source-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3>生态与物种数据</h3>
+                <ul class="source-list">
+                    <li><i class="fas fa-link"></i> 中科院海洋生物标本馆</li>
+                    <li><i class="fas fa-link"></i> 中国濒危物种科学数据库</li>
+                    <li><i class="fas fa-link"></i> 《中国海洋物种志》2023版</li>
+                    <li><i class="fas fa-link"></i> IUCN红色名录数据库</li>
+                </ul>
+            </div>
+            
+            <div class="source-card">
+                <div class="source-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <h3>历史与文献数据</h3>
+                <ul class="source-list">
+                    <li><i class="fas fa-link"></i> 国家哲学社会科学文献中心</li>
+                    <li><i class="fas fa-link"></i> 国家文物局考古中国平台</li>
+                    <li><i class="fas fa-link"></i> 辽宁省档案馆数字资源</li>
+                    <li><i class="fas fa-link"></i> 地方志数字化工程</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于数据中心</h3>
+                    <p>兴城海滨文旅数据中心由辽宁省文旅厅与中科院海洋研究所联合建立，致力于为文旅视觉设计提供科学数据支持，确保传播内容的准确性与权威性。</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>联系方式</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 辽宁省葫芦岛市兴城市海滨路28号</li>
+                        <li><i class="fas fa-phone"></i> 0429-5123456</li>
+                        <li><i class="fas fa-envelope"></i> data@xingcheng-tourism.gov.cn</li>
+                        <li><i class="fas fa-globe"></i> www.xingcheng-tourism.gov.cn/data</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>数据合作</h3>
+                    <p>我们欢迎科研机构、高校与文旅部门加入数据合作计划，共同推进文旅科学传播。</p>
+                    <p>合作邮箱：coop@xingcheng-tourism.gov.cn</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 兴城海滨文旅数据中心 | 辽ICP备12003892号-5 | 数据更新时间：2023年11月15日</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
